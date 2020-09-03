@@ -9,5 +9,5 @@ bases:
 namespace: cddeployment1
 
 images:
-- name: argoproj/argocd
-  newTag: v1.7.3
+- name: argoproj/argo-rollouts
+  newTag: v0.9.0
