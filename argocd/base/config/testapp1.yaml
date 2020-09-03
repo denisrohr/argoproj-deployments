@@ -11,8 +11,8 @@ spec:
 
   # Source of the application manifests
   source:
-    repoURL: https://github.com/ananware-systems/guestbook-helm.git
-    targetRevision: guestbook-simple-multi-tier-chart-with-dep
+    repoURL: https://github.com/denisrohr/guestbook-helm.git
+    targetRevision: 548dd70890ffec612355e9a84b696f4c70ea1ea8
     path: ''
 
     # helm specific config
