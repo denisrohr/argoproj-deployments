@@ -9,5 +9,5 @@ spec:
   project: default
   source:
     path: argocd
-    repoURL: https://github.com/denisrohr/argoproj-deployments.git
+    repoURL: https://github.com/denisrohr/argoproj-deployments
     targetRevision: HEAD
