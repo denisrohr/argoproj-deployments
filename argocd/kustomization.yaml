@@ -4,7 +4,7 @@ kind: Kustomization
 bases:
 - base
 - crds
-- cluster-install
+- cluster-rbac
 
 images:
 - name: argoproj/argocd

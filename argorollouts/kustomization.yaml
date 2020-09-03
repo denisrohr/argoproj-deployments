@@ -1,7 +1,7 @@
 bases:
 - base
 - crds
-- cluster-install
+- cluster-rbac
 
 images:
 - name: argoproj/argo-rollouts
