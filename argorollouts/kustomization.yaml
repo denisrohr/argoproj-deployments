@@ -3,8 +3,6 @@ bases:
 - crds
 - cluster-install
 
-namespace: cddeployment1
-
 images:
 - name: argoproj/argo-rollouts
   newTag: v0.9.0
