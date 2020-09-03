@@ -2,6 +2,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: guestbook
+  # You'll usually want to add your resources to the argocd namespace.
+  namespace: argocd
   # Add a this finalizer ONLY if you want these to cascade delete.
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -11,25 +13,10 @@ spec:
 
   # Source of the application manifests
   source:
-    repoURL: https://github.com/denisrohr/guestbook-helm.git
-    targetRevision: 548dd70890ffec612355e9a84b696f4c70ea1ea8
-    path: ''
+    repoURL: https://github.com/argoproj/argocd-example-apps.git
+    targetRevision: HEAD
+    path: guestbook
 
-    # helm specific config
-    helm:
-      # Extra parameters to set (same as setting through values.yaml, but these take precedence)
-      parameters:
-      - name: "nginx-ingress.controller.service.annotations.external-dns\\.alpha\\.kubernetes\\.io/hostname"
-        value: mydomain.example.com
-
-      # Release name override (defaults to application name)
-      releaseName: guestbook
-
-      # Helm values files for overriding values in the helm chart
-      # The path is relative to the spec.source.path directory defined above
-      valueFiles:
-      - values.yaml
-      
   # Destination cluster and namespace to deploy the application
   destination:
     server: https://kubernetes.default.svc
