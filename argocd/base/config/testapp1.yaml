@@ -49,43 +49,6 @@ spec:
       # Optional Helm version to template with. If omitted it will fallback to look at the 'apiVersion' in Chart.yaml
       # and decide which Helm binary to use automatically. This field can be either 'v2' or 'v3'.
       version: v2
-
-    # kustomize specific config
-    kustomize:
-      # Optional kustomize version. Note: version must be configured in argocd-cm ConfigMap
-      #version: v3.5.4
-      # Optional image name prefix
-      namePrefix: prod-
-      # Optional images passed to "kustomize edit set image".
-      images:
-      - gcr.io/heptio-images/ks-guestbook-demo:0.2
-
-    # directory
-    directory:
-      recurse: true
-      jsonnet:
-        # A list of Jsonnet External Variables
-        extVars:
-        - name: foo
-          value: bar
-          # You can use "code to determine if the value is either string (false, the default) or Jsonnet code (if code is true).
-        - code: true
-          name: baz
-          value: "true"
-        # A list of Jsonnet Top-level Arguments
-        tlas:
-        - code: false
-          name: foo
-          value: bar
-
-    # plugin specific config
-    plugin:
-      name: mypluginname
-      # environment variables passed to the plugin
-      env:
-        - name: FOO
-          value: bar
-
   # Destination cluster and namespace to deploy the application
   destination:
     server: https://kubernetes.default.svc
