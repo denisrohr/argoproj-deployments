@@ -3,10 +3,6 @@ bases:
 - crds
 - cluster-install
 
-resources:
-- https://github.com/argoproj/argo-cd/manifests/ha/cluster-install
-- https://github.com/argoproj-labs/argocd-notifications/manifests/bot
-
 namespace: cddeployment1
 
 images:
