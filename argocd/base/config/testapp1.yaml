@@ -13,6 +13,7 @@ spec:
   source:
     repoURL: https://github.com/ananware-systems/guestbook-helm.git
     targetRevision: HEAD
+    path: ''
 
     # helm specific config
     helm:
