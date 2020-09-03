@@ -4,7 +4,7 @@ data:
   statusbadge.enabled: 'true'
   users.anonymous.enabled: 'true'
   ga.trackingid: 'UA-105170809-6'
-  url: https://cd.apps.argoproj.io
+  url: https://argocd.cddeployment1.example.com
   configManagementPlugins: |
     - name: flux
       generate:

@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - cd.apps.argoproj.io
+    - argocd.cddeployment1.example.com
     secretName: argocd-secret
   rules:
-  - host: cd.apps.argoproj.io
+  - host: argocd.cddeployment1.example.com
     http:
       paths:
       - path: /

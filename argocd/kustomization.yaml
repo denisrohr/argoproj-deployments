@@ -2,15 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- base/argo-cd-issuer.yaml
-- base/argo-cd-certificate.yaml
 - base/http01-ingress.yaml
 - base/argo-cd-ui-ingress.yaml
-- base/jenkins-ingress.yaml
-- base/argo-cd-notifications-bot-ingress.yaml
-- base/argo-cd-notifications-bot-certificate.yaml
-- https://github.com/argoproj/argo-cd/manifests/ha/cluster-install
-- https://github.com/argoproj-labs/argocd-notifications/manifests/bot
 
 
 patchesStrategicMerge:
@@ -28,7 +21,7 @@ patchesJson6902:
     name: argocd-server
     version: v1
 
-namespace: argocd
+namespace: cddeployment1
 
 images:
 - name: argoproj/argocd
