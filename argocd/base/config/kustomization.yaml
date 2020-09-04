@@ -9,3 +9,4 @@ resources:
 - argocd-tls-certs-cm.yaml
 - argocd-gpg-keys-cm.yaml
 - testapp1.yaml
+- testapp2.yaml
