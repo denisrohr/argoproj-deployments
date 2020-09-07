@@ -19,7 +19,7 @@ spec:
   # Destination cluster and namespace to deploy the application
   destination:
     server: https://kubernetes.default.svc
-    namespace: guestbook2
+    namespace: guestbook3
 
   # Sync policy
   syncPolicy:
