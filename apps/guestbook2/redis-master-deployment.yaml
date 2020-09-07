@@ -30,6 +30,11 @@ spec:
   strategy:
     canary:
       canaryService: redis-master-preview
+      stableService: redis-master-stable
+      trafficRouting:
+        smi:
+          rootService: redis-master
+          trafficSplitName: redis-master-traffic-split
       steps:
       - setWeight: 20
       - pause: {}

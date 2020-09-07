@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: redis-master
+  name: redis-master-stable
   labels:
     app: redis
     role: master

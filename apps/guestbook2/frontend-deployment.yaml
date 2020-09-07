@@ -40,6 +40,11 @@ spec:
   strategy:
     canary:
       canaryService: frontend-preview
+      stableService: frontend-stable
+      trafficRouting:
+        smi:
+          rootService: frontend
+          trafficSplitName: frontend-traffic-split
       steps:
       - setWeight: 20
       - pause: {}
