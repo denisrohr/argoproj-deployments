@@ -10,3 +10,4 @@ resources:
 - argocd-gpg-keys-cm.yaml
 - testapp1.yaml
 - testapp2.yaml
+- testapp3.yaml
