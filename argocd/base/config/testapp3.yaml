@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: guestbook3
+  name: candemo
   # You'll usually want to add your resources to the argocd namespace.
   # Add a this finalizer ONLY if you want these to cascade delete.
   finalizers:
@@ -14,12 +14,12 @@ spec:
   source:
     repoURL: https://github.com/denisrohr/argoproj-deployments.git
     targetRevision: HEAD
-    path: apps/guestbook2
+    path: apps/candemo
 
   # Destination cluster and namespace to deploy the application
   destination:
     server: https://kubernetes.default.svc
-    namespace: guestbook3
+    namespace: candemo
 
   # Sync policy
   syncPolicy:
