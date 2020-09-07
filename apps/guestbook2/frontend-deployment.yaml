@@ -1,5 +1,5 @@
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
-kind: Deployment
+kind: Rollout
 metadata:
   name: frontend
   labels:
@@ -9,7 +9,8 @@ spec:
     matchLabels:
       app: guestbook
       tier: frontend
-  replicas: 3
+  replicas: 5
+  revisionHistoryLimit: 1
   template:
     metadata:
       labels:
@@ -36,3 +37,15 @@ spec:
           # value: env
         ports:
         - containerPort: 80
+    strategy:
+      canary:
+          canaryService: frontend-preview
+          steps:
+          - setWeight: 20
+          - pause: {}
+          - setWeight: 40
+          - pause: {duration: 10}
+          - setWeight: 60
+          - pause: {duration: 10}
+          - setWeight: 80
+          - pause: {duration: 10}
