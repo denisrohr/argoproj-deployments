@@ -5,3 +5,4 @@ bases:
 - argocd
 - argorollouts
 - apps-to-deploy
+- gitea

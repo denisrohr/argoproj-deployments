@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitea-deployment
+  labels:
+    app: gitea
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitea
+  template:
+    metadata:
+      labels:
+        app: gitea
+    spec:
+      initContainers:
+      - name: init-jq-tools
+        image: stedolan/jq:latest
+        command: ['sh', '-c', 'cat /usr/local/bin/jq > /tools/jq; chmod +x /tools/jq']
+        volumeMounts:
+            - mountPath: /tools
+              name: gitea-tools
+              readOnly: false
+      - name: init-app-ini
+        image: busybox:latest
+        command: ['sh', '-c', 'mkdir -p /data/gitea/conf/; ls -al /tmp/;ls -al /data/gitea/conf; cat /tmp/app.ini > /data/gitea/conf/app.ini;']
+        volumeMounts:
+            - mountPath: /data
+              name: gitea-data
+              readOnly: false
+            - name: gitea-app-conf
+              mountPath: /tmp/app.ini
+              subPath: app.ini
+      containers:
+      - name: gitea-container
+        image: gitea/gitea:1.12.3
+        lifecycle:
+          postStart:
+            exec:
+              command: ['su', 'git', '-c', '/data/init_gitea.sh']
+        ports:
+            - name: http
+              containerPort: 3000
+            - name: https
+              containerPort: 443
+        volumeMounts:
+            - mountPath: /data
+              name: gitea-data
+              readOnly: false
+            - name: gitea-app-init
+              mountPath: /data/init_gitea.sh
+              subPath: init_gitea.sh
+            - mountPath: /tools
+              name: gitea-tools
+            - mountPath: /gitea-tmp
+              name: gitea-tmp
+            - mountPath: /data/mirrors
+              name: gitea-mirrors
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+      volumes:
+        - name: gitea-data
+          emptyDir: {}
+        - name: gitea-app-conf
+          configMap:
+            name: gitea-config
+        - name: gitea-app-init
+          configMap:
+            name: gitea-init
+            defaultMode: 0777
+        - name: gitea-mirrors
+          configMap:
+            name: gitea-mirrors
+        - name: gitea-tools
+          emptyDir: {}
+        - name: gitea-tmp
+          emptyDir: {}
+            
+
