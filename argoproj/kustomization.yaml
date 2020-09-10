@@ -1,4 +1,0 @@
-resources:
-- base/argocd.yaml
-- base/argorollouts.yaml
-
