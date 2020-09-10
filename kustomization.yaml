@@ -4,3 +4,4 @@ kind: Kustomization
 bases:
 - argocd
 - argorollouts
+- apps-to-deploy

@@ -3,6 +3,3 @@ kind: Kustomization
 
 resources:
 - testapp1.yaml
-- testapp2.yaml
-- testapp3.yaml
-- testapp4.yaml
