@@ -12,8 +12,8 @@ spec:
       - backend:
           serviceName: argocd-server
           servicePort: https
-    host: grpc.argocd.cluster1.local
+    host: grpc.argocd.cluster2.local
   tls:
   - hosts:
-    - grpc.argocd.cluster1.local
+    - grpc.argocd.cluster2.local
     secretName: argocd-secret # do not change, this is provided by Argo CD
