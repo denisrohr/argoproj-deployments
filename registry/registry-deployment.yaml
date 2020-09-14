@@ -30,18 +30,18 @@ spec:
             readOnly: true
           - name: storage
             mountPath: /var/lib/registry
-  volumes:
-    - name: config
-      configMap:
-        name: registry-config
-        items:
-          - key: registry-config.yml
-            path: config.yml
-    - name: htpasswd
-      secret:
-        secretName: registry-login
-        items:
-          - key: HTPASSWD
-            path: htpasswd
-    - name: storage
-      emptyDir: {}
+      volumes:
+        - name: config
+          configMap:
+            name: registry-config
+            items:
+              - key: registry-config.yml
+                path: config.yml
+        - name: htpasswd
+          secret:
+            secretName: registry-login
+            items:
+              - key: HTPASSWD
+                path: htpasswd
+        - name: storage
+          emptyDir: {}
