@@ -16,10 +16,10 @@ spec:
     targetRevision: HEAD
     path: .
     
-  kustomize:
-    images:
-      - wordpress=registry-service/wordpress
-      - mysql=registry-service/mysql
+    kustomize:
+      images:
+        - wordpress=registry-service/wordpress
+        - mysql=registry-service/mysql
       
   # Destination cluster and namespace to deploy the application
   destination:
