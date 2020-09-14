@@ -12,9 +12,6 @@ http:
   headers:
     X-Content-Type-Options: [nosniff]
 auth:
-  htpasswd:
-    realm: basic-realm
-    path: /auth/htpasswd
 health:
   storagedriver:
     enabled: true
