@@ -6,3 +6,4 @@ bases:
 - argorollouts
 - apps-to-deploy
 - gitea
+- registry

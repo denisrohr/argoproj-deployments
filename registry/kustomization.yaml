@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- registry-deployment.yaml
+- registry-ingress.yaml
+- registry-service.yaml
+
+configMapGenerator:
+    - name: registry-config
+      files:
+        - static-config/registry-config.yml
+      
+secretGenerator:
+    - name: registry-login
+      env: static-config/htpasswd.txt
+      type: Opaque
