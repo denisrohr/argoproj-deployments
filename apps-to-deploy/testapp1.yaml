@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: guestbook
+  name: wp
   # You'll usually want to add your resources to the argocd namespace.
   # Add a this finalizer ONLY if you want these to cascade delete.
   finalizers:
@@ -12,14 +12,21 @@ spec:
 
   # Source of the application manifests
   source:
-    repoURL: https://github.com/denisrohr/argoproj-deployments.git
+    repoURL: http://gitea-service/mirror/wordpress
     targetRevision: HEAD
-    path: apps/guestbook2
-
+    path: .
+    
+  kustomize:
+    images:
+      - name: wordpress
+        newName: registry-service/wordpress
+      - name: mysql
+        newName: registry-service/mysql
+      
   # Destination cluster and namespace to deploy the application
   destination:
     server: https://kubernetes.default.svc
-    namespace: guestbook
+    namespace: wp
 
   # Sync policy
   syncPolicy:
@@ -31,10 +38,10 @@ spec:
     - CreateNamespace=true # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster.
     # The retry feature is available since v1.7
     retry:
-      limit: 5 # number of failed sync attempt retries; unlimited number of attempts if less than 0
+      limit: 20 # number of failed sync attempt retries; unlimited number of attempts if less than 0
       backoff:
-        duration: 5s # the amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h")
-        factor: 2 # a factor to multiply the base duration after each failed retry
+        duration: 1m # the amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h")
+        factor: 1 # a factor to multiply the base duration after each failed retry
         maxDuration: 3m # the maximum amount of time allowed for the backoff strategy
 
   # Ignore differences at the specified json pointers
