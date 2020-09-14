@@ -41,7 +41,7 @@ spec:
       secret:
         secretName: registry-login
         items:
-        - key: HTPASSWD
-          path: htpasswd
+          - key: HTPASSWD
+            path: htpasswd
     - name: storage
       emptyDir: {}

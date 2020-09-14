@@ -13,5 +13,5 @@ configMapGenerator:
       
 secretGenerator:
     - name: registry-login
-      env: static-config/htpasswd.txt
-      type: Opaque
+      files:
+        - static-config/HTPASSWD
