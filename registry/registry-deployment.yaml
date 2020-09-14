@@ -21,15 +21,15 @@ spec:
         - name: http
           containerPort: 5000
           protocol: TCP
-      volumeMounts:
-        - name: config
-          mountPath: /etc/docker/registry
-          readOnly: true
-        - name: htpasswd
-          mountPath: /auth
-          readOnly: true
-        - name: storage
-          mountPath: /var/lib/registry
+        volumeMounts:
+          - name: config
+            mountPath: /etc/docker/registry
+            readOnly: true
+          - name: htpasswd
+            mountPath: /auth
+            readOnly: true
+          - name: storage
+            mountPath: /var/lib/registry
   volumes:
     - name: config
       configMap:
