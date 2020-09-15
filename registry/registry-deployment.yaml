@@ -17,6 +17,7 @@ spec:
       containers:
       - name: registry-container
         image: registry:2.7.1
+        args: ["--enable-registry", "--enable-registry-cache"]
         ports:
         - name: http
           containerPort: 5000
