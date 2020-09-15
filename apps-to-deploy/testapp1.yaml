@@ -23,7 +23,7 @@ spec:
       
   # Destination cluster and namespace to deploy the application
   destination:
-    server: https://kubernetes.default.svc
+    server: https://192.168.99.107:8443
     namespace: wp
 
   # Sync policy
