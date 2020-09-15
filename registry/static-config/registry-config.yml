@@ -21,4 +21,5 @@ health:
     threshold: 3
 proxy:
   remoteurl: https://registry-1.docker.io
-  username: toto
+  username: randomdockerid3463
+  password: AVeryFakePassword1234!
