@@ -1,6 +1,7 @@
 version: 0.1
 log:
-  accesslog: true
+  accesslog: 
+    disabled: false
   level: debug
   formatter: text
 storage:
