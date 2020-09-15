@@ -18,4 +18,4 @@ spec:
   tls:
   - hosts:
     - gitea.cluster1.local
-      secretName: cicd-tls-secret
+    secretName: cicd-tls-secret
