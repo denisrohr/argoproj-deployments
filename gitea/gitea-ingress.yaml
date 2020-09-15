@@ -15,3 +15,7 @@ spec:
         backend:
           serviceName: gitea-service
           servicePort: 80
+  tls:
+  - hosts:
+    - gitea.cluster1.local
+      secretName: cicd-tls-secret

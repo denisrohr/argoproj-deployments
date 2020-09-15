@@ -16,4 +16,5 @@ spec:
   tls:
   - hosts:
     - grpc.argocd.cluster1.local
-    secretName: argocd-secret # do not change, this is provided by Argo CD
+    #secretName: argocd-secret # do not change, this is provided by Argo CD
+    secretName: cicd-tls-secret
