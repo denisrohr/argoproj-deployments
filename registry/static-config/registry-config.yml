@@ -20,4 +20,5 @@ health:
     interval: 10s
     threshold: 3
 proxy:
-  remoteurl: https://hub.docker.com
+  remoteurl: https://registry-1.docker.io
+  username: toto
