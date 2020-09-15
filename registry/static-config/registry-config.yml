@@ -20,4 +20,4 @@ health:
     interval: 10s
     threshold: 3
 proxy:
-  remoteurl: https://index.docker.io
+  remoteurl: https://hub.docker.com
