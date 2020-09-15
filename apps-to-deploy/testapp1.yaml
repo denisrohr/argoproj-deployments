@@ -18,8 +18,8 @@ spec:
     
     kustomize:
       images:
-        - wordpress=registry-service/wordpress
-        - mysql=registry-service/mysql
+        - wordpress=registry.cluster1.local/wordpress
+        - mysql=registry.cluster1.local/mysql
       
   # Destination cluster and namespace to deploy the application
   destination:
