@@ -1,7 +1,8 @@
 version: 0.1
 log:
-  fields:
-    service: registry
+  accesslog: true
+  level: debug
+  formatter: text
 storage:
   cache:
     blobdescriptor: inmemory
