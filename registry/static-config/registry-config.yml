@@ -4,6 +4,9 @@ log:
     disabled: false
   level: debug
   formatter: text
+  fields:
+    service: registry
+    environment: staging
 storage:
   cache:
     blobdescriptor: inmemory
