@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registry-agent-deployment
+  labels:
+    app: registry-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: registry-agent
+  template:
+    metadata:
+      labels:
+        app: registry-agent
+    spec:
+      initContainers:
+      - name: wait-for-registry
+        image: busybox
+        args:
+        - /bin/sh
+        - -c
+        - >
+          set -x;
+          while [ $(curl -sw '%{http_code}' "http://registry-service:5000/v2/_catalog" -o /dev/null) -ne 200 ]; do
+            sleep 5;
+          done
+      containers:
+      - name: registry-agent-container
+        image: 192.168.99.109:5000/registry-agent:1.0
+        volumeMounts:
+          - name: registry-config
+            mountPath: /etc/docker/registry
+            readOnly: true
+          - name: registry-agent-config
+            mountPath: /etc
+            readOnly: true
+          - name: registry-storage
+            mountPath: /var/lib/registry
+      volumes:
+        - name: registry-config
+          configMap:
+            name: registry-config
+            items:
+              - key: registry-config.yml
+                path: config.yml
+        - name: registry-agent-config
+          configMap:
+            name: registry-agent-config
+            items:
+              - key: agentconfig.json
+                path: agentconfig.json
+        - name: registry-storage
+          emptyDir: {}

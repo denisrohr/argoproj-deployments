@@ -1,0 +1,22 @@
+{
+    "destinationRegistry" : "registry-service:5000",
+    "mirrors" : 
+    [
+        {
+            "repo" : "busybox",
+            "sourceRegistry" : "docker.io",
+            "platform" : "linux/amd64",
+            "tags":
+            [
+                {
+                    "digest" : "sha256:2ca5e69e244d2da7368f7088ea3ad0653c3ce7aaccd0b8823d11b0d5de956002",
+                    "destinationTag" : "ratherThisOne3"
+                },
+                {
+                    "digest" : "sha256:fd4a8673d0344c3a7f427fe4440d4b8dfd4fa59cfabbd9098f9eb0cb4ba905d0",
+                    "destinationTag" : "ratherThisOne4"
+                }
+            ]
+        }
+    ]
+}

@@ -7,3 +7,4 @@ bases:
 - apps-to-deploy
 - gitea
 - registry
+- registry-agent
