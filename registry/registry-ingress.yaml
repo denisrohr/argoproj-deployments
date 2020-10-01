@@ -14,7 +14,7 @@ spec:
       - path: /
         backend:
           serviceName: registry-service
-          servicePort: 80
+          servicePort: 5000
   tls:
   - hosts:
     - registry.cluster1.local
