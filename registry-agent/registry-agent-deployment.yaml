@@ -16,15 +16,8 @@ spec:
     spec:
       initContainers:
       - name: wait-for-registry
-        image: busybox
-        args:
-        - /bin/sh
-        - -c
-        - >
-          set -x;
-          while [ $(curl -sw '%{http_code}' "http://registry-service:5000/v2/_catalog" -o /dev/null) -ne 200 ]; do
-            sleep 5;
-          done
+        image: busybox:1.31
+        command: ['sh', '-c', "until $(curl --output /dev/null --silent --head --fail http://registry-service:5000); do printf 'waiting for registry...'; sleep 5; done"]
       containers:
       - name: registry-agent-container
         image: 192.168.99.109:5000/registry-agent:1.0

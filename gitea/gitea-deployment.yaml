@@ -23,7 +23,7 @@ spec:
               name: gitea-tools
               readOnly: false
       - name: init-app-ini
-        image: busybox:latest
+        image: busybox:1.31
         command: ['sh', '-c', 'mkdir -p /data/gitea/conf/; ls -al /tmp/;ls -al /data/gitea/conf; cat /tmp/app.ini > /data/gitea/conf/app.ini;']
         volumeMounts:
             - mountPath: /data
