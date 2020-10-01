@@ -5,9 +5,9 @@ resources:
 - registry-agent-deployment.yaml
 
 configMapGenerator:
-    - name: registry-config
+    - name: registry-vol-config
       files:
-        - static-config/registry-agent-config.yml
+        - static-config/registry-vol-config.yml
     - name: registry-agent-config
       files:
         - dynamic-config/agentconfig.json

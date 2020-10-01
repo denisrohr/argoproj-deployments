@@ -29,7 +29,7 @@ spec:
       - name: registry-agent-container
         image: 192.168.99.109:5000/registry-agent:1.0
         volumeMounts:
-          - name: registry-config
+          - name: registry-vol-config
             mountPath: /etc/docker/registry
             readOnly: true
           - name: registry-agent-config
@@ -38,11 +38,11 @@ spec:
           - name: registry-storage
             mountPath: /var/lib/registry
       volumes:
-        - name: registry-config
+        - name: registry-vol-config
           configMap:
-            name: registry-config
+            name: registry-vol-config
             items:
-              - key: registry-config.yml
+              - key: registry-vol-config.yml
                 path: config.yml
         - name: registry-agent-config
           configMap:
