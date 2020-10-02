@@ -20,7 +20,7 @@ spec:
         command: ['sh', '-c', "until wget --spider --tries 1 http://registry-service:5000/v2/; do printf 'waiting for registry...'; sleep 5; done"]
       containers:
       - name: registry-agent-container
-        image: registry-agent:1.0
+        image: tmpregistry.cluster1.local/registry-agent:latest
         volumeMounts:
           - name: registry-vol-config
             mountPath: /etc/docker/registry
